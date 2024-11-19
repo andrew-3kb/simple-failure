@@ -1,0 +1,27 @@
+{
+  "name": "simple-failure",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "require": "./src/index.js",
+      "import": "./src/index.mjs"
+    }
+  },
+  "scripts": {
+    "lint": "biome check ./src && tsc --noEmit",
+    "format": "biome check --write --unsafe ./src",
+    "test": "vitest run --typecheck",
+    "bundle": "tsx ./scripts/bundle.mts"
+  },
+  "devDependencies": {
+    "typescript": "5.6.2",
+    "tsup": "8.3.5",
+    "@biomejs/biome": "1.9.0",
+    "vitest": "2.1.5",
+    "tsx": "4.19.1",
+    "zx": "8.1.6"
+  }
+}
