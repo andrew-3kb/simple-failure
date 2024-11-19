@@ -9,7 +9,7 @@ Simple errors as values. Intended to be used in a union instead of bieng a wrapp
 Example function that can fail and handling the failure:
 
 ```
-import { failure, isFailure } from 'Failure';
+import { failure, isFailure } from 'simple-failure';
 
 function safeSort(values: number[]): number[] | Failure<string> {
     if (values.includes(69)) {
@@ -29,7 +29,7 @@ console.log(sortedNumbers);
 Create Failure value:
 
 ```
-import { failure } from 'Failure';
+import { failure } from 'simple-failure';
 
 failure(new Error("something"));
 
@@ -38,7 +38,7 @@ failure(new Error("something"));
 Check if a value is a Failure:
 
 ```
-import { isFailure } from 'Failure';
+import { isFailure } from 'simple-failure';
 
 const result = doSomething(42);
 if (isFailure(result)) {
@@ -52,7 +52,7 @@ if (isFailure(result)) {
 Throw the error inside the failure if the value is a failure:
 
 ```
-import { throwFailure } from 'Failure';
+import { throwFailure } from 'simple-failure';
 const result = doSomething(42);
 throwFailure(result)
 // handle success
@@ -61,7 +61,7 @@ throwFailure(result)
 Get the error inside the failure if the value is a failure, returns undefined if it isn't:
 
 ```
-import { getFailure } from 'Failure';
+import { getFailure } from 'simple-failure';
 const result = doSomething(42);
 const error = getFailure(result);
 if (error) {
@@ -72,7 +72,7 @@ if (error) {
 Wrap a block of code or a promise, and turn exceptions/rejections into Failures. Supports functions, async functions, and Promises
 
 ```
-import { captureFailure, isFailure } from 'Failure';
+import { captureFailure, isFailure } from 'simple-failure';
 const result = await captureFailure(async () => {
     const foo = await doSomething();
     const bar = await doSomethingElse();
